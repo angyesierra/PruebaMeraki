@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,31 @@ public class Biblioteca {
     }
 
     //TODO:Devolver libro
+    public void devolverLibro(String usuarioD, String libroD) {
+        Iterator<Map.Entry<Usuario, Libro>> iterator = librosPrestados.entrySet().iterator();
+        boolean libroDevuelto = false;
+    
+        while (iterator.hasNext()) {
+            Map.Entry<Usuario, Libro> entry = iterator.next();
+            Usuario usuario = entry.getKey();
+            Libro libro = entry.getValue();
+    
+            if (libro.getTitulo().equals(libroD) && usuario.getNombre().equals(usuarioD)) {
+                iterator.remove();
+                librosDisponibles.add(libro);
+                libroDevuelto = true;
+                break; 
+            }
+        }
+    
+        if (libroDevuelto) {
+            System.out.println("El libro ha sido devuelto con éxito.");
+        } else {
+            System.out.println("El libro no está prestado a este usuario.");
+        }
+    }
+    
+
     
 
     public void catalogoLibros(){

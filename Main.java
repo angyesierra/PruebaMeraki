@@ -1,3 +1,4 @@
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -67,8 +68,16 @@ public class Main {
                     break;
                 
                 case 3:
-                    break;
-                
+                System.out.println("Usuario quien devuelve el libro: ");
+                String usuarioDevuelve = scanner.nextLine();
+
+                System.out.println("Libro a devolver: ");
+                String libroDevolver = scanner.nextLine();
+
+                biblioteca.devolverLibro(usuarioDevuelve, libroDevolver);
+
+                break;
+
                 case 4:
                 biblioteca.catalogoLibros();
                     break; 
